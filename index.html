@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#111111">
+<meta name="color-scheme" content="dark">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="PSY">
+<title>PSY – Psychology Videos</title>
+<link rel="preconnect" href="https://i.ytimg.com" crossorigin>
+<link rel="preload" href="videos.json" as="fetch" crossorigin>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <span class="logo">🧠</span>
+  <div class="ttl"><h1>PSY</h1><p id="subtitle"></p></div>
+</header>
+<div class="bar">
+  <div class="searchbox">
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="m21 21-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"/></svg>
+    <input id="q" type="search" dir="auto" enterkeyhint="search" autocomplete="off" spellcheck="false" placeholder="Search in Arabic or English…" aria-label="Search videos">
+    <button id="clear" type="button" aria-label="Clear" hidden>✕</button>
+  </div>
+  <div class="tabs" role="tablist">
+    <button class="tab on" data-tab="all" role="tab"><span class="ti">🎬</span><span class="tl">All <small id="nall"></small></span></button>
+    <button class="tab" data-tab="fav" role="tab"><span class="ti">☰</span><span class="tl">Playlists <small id="nfav"></small></span></button>
+    <button class="tab" data-tab="stats" role="tab"><span class="ti">📊</span><span class="tl">Stats</span></button>
+    <button class="tab" data-tab="settings" role="tab"><span class="ti">⚙️</span><span class="tl">Settings</span></button>
+  </div>
+  <div id="lists" class="lists" hidden></div>
+</div>
+<main>
+  <div id="count" class="count" aria-live="polite"></div>
+  <section id="stats" class="stats" hidden></section>
+  <section id="settings" class="settings" hidden></section>
+  <section id="grid" class="grid"></section>
+  <div id="empty" class="empty" hidden><div>🔎</div><p id="emsg">No videos match your search.</p><button id="reset" type="button">Clear search</button></div>
+  <div id="sentinel" aria-hidden="true"></div>
+</main>
+<div id="player" class="player" role="dialog" aria-modal="true" aria-label="Video player" hidden>
+  <div class="pbox">
+    <div class="pvid"><iframe id="frame" title="Video" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" allowfullscreen referrerpolicy="no-referrer"></iframe><div class="spin"></div></div>
+    <div class="pbar"><p id="ptitle"></p>
+      <div class="pbtn"><button id="pstar" type="button">☆ Save</button><button id="pnext" type="button">⟳ Next server</button><button id="pext" type="button">↗ Open</button><button id="pclose" type="button" aria-label="Close">✕</button></div>
+    </div>
+  </div>
+</div>
+<div id="sheet" class="sheetwrap" role="dialog" aria-modal="true" hidden><div id="sbox" class="sheetbox"></div></div>
+<input id="file" type="file" accept=".json,application/json" hidden>
+<script src="search.js"></script>
+</body>
+</html>
